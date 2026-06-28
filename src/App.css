@@ -1,0 +1,27 @@
+.app {
+  min-height: 100vh;
+  background: var(--surface-0);
+  color: var(--text-primary);
+}
+
+/* Global styles */
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1), 0 0 0 1px rgb(37, 99, 235);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--surface-0);
+  }
+}
