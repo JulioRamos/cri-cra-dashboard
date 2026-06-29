@@ -1,0 +1,4 @@
+{
+  "status": 401,
+  "body": "Access Token in the request, identified by HEADER access_token, is invalid. Check docs.sensedia.com"
+}

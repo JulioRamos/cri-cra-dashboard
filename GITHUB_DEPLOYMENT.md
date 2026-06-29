@@ -1,36 +1,5 @@
 # 🚀 GitHub Deployment Guide - CRI/CRA Dashboard
 
-## Passo 1: Criar Repositório no GitHub
-
-1. Vá para https://github.com/new
-2. Faça login em sua conta GitHub (ou crie uma se não tiver)
-3. Preencha os dados:
-   - **Repository name**: `cri-cra-dashboard`
-   - **Description**: `Interactive CRI/CRA financial dashboard with ANBIMA API integration`
-   - **Public** (recomendado para portfólio) ou **Private**
-   - Deixe todas as outras opções desmarcadas (não inicie com README)
-   
-4. Clique em **Create repository**
-
-## Passo 2: Adicionar Remote ao Git Local
-
-Copie os comandos mostrados na página do GitHub (opção "...or push an existing repository from the command line"):
-
-```bash
-cd ~/cri-cra-dashboard
-
-# Renomear branch para main (se estiver em master)
-git branch -M main
-
-# Adicionar remote do GitHub
-git remote add origin https://github.com/seu-usuario/cri-cra-dashboard.git
-
-# Fazer push para GitHub
-git push -u origin main
-```
-
-**Substitua `seu-usuario` pelo seu usuário GitHub real**
-
 ## Passo 3: Configurar Deploy Automático
 
 ### Opção A: Vercel (RECOMENDADO - Mais Fácil)
@@ -117,83 +86,13 @@ jobs:
    - `VERCEL_ORG_ID`
    - `VERCEL_PROJECT_ID`
 
-## Passo 6: Fazer Atualizações
-
-Quando fizer mudanças locais:
-
-```bash
-# Fazer as alterações nos arquivos...
-
-# Adicionar mudanças
-git add .
-
-# Fazer commit com mensagem descritiva
-git commit -m "Adicionar filtro de liquidez mínima"
-
-# Enviar para GitHub
-git push origin main
-
-# Deploy automático ocorre em segundos!
-```
-
-## Comandos Úteis
-
-```bash
-# Ver status dos arquivos
-git status
-
-# Ver histórico de commits
-git log --oneline
-
-# Desfazer último commit (mas manter mudanças)
-git reset --soft HEAD~1
-
-# Desfazer mudanças em um arquivo
-git checkout -- src/App.js
-
-# Ver configuração do git
-git config --list
-```
-
 ## URLs Importantes
 
-- 📝 **Seu Repositório**: https://github.com/seu-usuario/cri-cra-dashboard
-- 🌐 **Aplicação Live (Vercel)**: https://cri-cra-dashboard.vercel.app
-- 🌐 **Aplicação Live (Netlify)**: https://cri-cra-dashboard.netlify.app
-- 🔧 **Vercel Dashboard**: https://vercel.com/dashboard
-- 🔧 **Netlify Dashboard**: https://app.netlify.com
-
-## Troubleshooting
-
-### Erro: "fatal: could not read Username for 'github.com'"
-
-```bash
-# Use HTTPS com token pessoal:
-git remote set-url origin https://seu-token@github.com/seu-usuario/cri-cra-dashboard.git
-
-# Ou use SSH:
-# 1. Gere chave SSH: ssh-keygen -t ed25519
-# 2. Adicione em GitHub Settings > SSH Keys
-# 3. git remote set-url origin git@github.com:seu-usuario/cri-cra-dashboard.git
-```
-
-### Erro de Push Rejected
-
-```bash
-# Puxar mudanças remotas primeiro
-git pull origin main
-
-# Resolver conflitos se houver
-# Depois fazer push novamente
-git push origin main
-```
-
-### Verificar Conexão SSH
-
-```bash
-ssh -T git@github.com
-# Deve retornar: "Hi seu-usuario! You've successfully authenticated..."
-```
+- 📝 **Seu Repositório**: https://github.com/JulioRamos/cri-cra-dashboard
+- 🌐 **Aplicação Live (Vercel)**: 
+- 🌐 **Aplicação Live (Netlify)**: 
+- 🔧 **Vercel Dashboard**: 
+- 🔧 **Netlify Dashboard**: 
 
 ## Próximos Passos
 

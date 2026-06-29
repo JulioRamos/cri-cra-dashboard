@@ -5,8 +5,17 @@ Uma aplicação web interativa para análise, filtragem e visualização de dado
 ## 🎯 Funcionalidades
 
 - **Integração com API ANBIMA**: Acesso em tempo real aos dados de mercado secundário de CRI/CRA
+  - ✨ **NOVO**: Múltiplos endpoints com CORS proxy para maior confiabilidade
+  - ✨ **NOVO**: Fallback automático se a API principal falhar
+  - ✨ **NOVO**: Cache local (1 hora) para reduzir chamadas à API
 - **Filtros Avançados**: Filtre por tipo, range de taxa, emissor, originador
 - **Ordenação Dinâmica**: Ordene por taxa indicativa, duration, PU ou volatilidade
+- **Exportação de Dados**: 
+  - ✨ **NOVO**: Exportar dados filtrados para CSV
+  - ✨ **NOVO**: Exportar dados filtrados para JSON
+- **Paginação Inteligente**: 
+  - ✨ **NOVO**: 25 itens por página para melhor performance
+  - ✨ **NOVO**: Navegação entre páginas otimizada
 - **Análise Financeira Expandida**:
   - Taxa de Compra/Venda
   - Preço Unitário (PU)
@@ -196,15 +205,20 @@ Modifique as variáveis CSS em `public/index.html` ou `src/App.css`:
 ## 🐛 Troubleshooting
 
 ### CORS Error na API ANBIMA
-Se receber erro de CORS, a API ANBIMA pode exigir:
-- Chave de API (registre-se em https://admin-developers.anbima.com.br)
-- Proxy server intermediário
-- Modo demo com dados mock
+✅ **RESOLVIDO!** O dashboard agora usa múltiplos CORS proxies:
+1. Tenta conexão direta com ANBIMA
+2. Fallback para `corsproxy.io`
+3. Fallback para `allorigins.win`
+4. Se todos falharem, usa dados mock de demonstração
+
+O sistema também mantém cache local de 1 hora, reduzindo necessidade de chamadas à API.
 
 ### Performance Lenta
-- Implemente paginação (adicione limite de 50 ativos por página)
-- Use virtualização de lista para tabelas longas
-- Implemente lazy loading das métricas expandidas
+✅ **RESOLVIDO!** Implementações realizadas:
+- ✓ Paginação (25 itens por página)
+- ✓ Cache local para evitar refetching desnecessário
+- ✓ Loading states otimizados
+- ✓ Filtros aplicados antes da renderização
 
 ### Dados Não Atualizam
 - Verifique a disponibilidade da API ANBIMA (após 20h)
@@ -213,15 +227,22 @@ Se receber erro de CORS, a API ANBIMA pode exigir:
 
 ## 📈 Roadmap
 
+### ✅ Concluído
+- [x] ~~Exportação de dados (CSV/JSON)~~ ✅ v1.1.0
+- [x] ~~CORS proxy para API ANBIMA~~ ✅ v1.1.0
+- [x] ~~Paginação para performance~~ ✅ v1.1.0
+- [x] ~~Cache local de dados~~ ✅ v1.1.0
+
+### 🚧 Próximas Features
 - [ ] Gráficos de histórico de taxas (Chart.js/D3.js)
-- [ ] Exportação de dados (CSV/Excel)
-- [ ] Comparação entre ativos
-- [ ] Alertas de preço
-- [ ] Carteira simulada
+- [ ] Comparação entre ativos (side-by-side)
+- [ ] Alertas de preço (email/push notifications)
+- [ ] Carteira simulada com tracking
 - [ ] Integração com B3 e dados de trading
-- [ ] Autenticação e backlog do usuário
-- [ ] Dashboard personalizado
+- [ ] Autenticação e perfis de usuário
+- [ ] Dashboard personalizado (drag & drop widgets)
 - [ ] Mobile app (React Native)
+- [ ] Exportação para Excel com gráficos
 
 ## 🤝 Contribuindo
 
@@ -240,15 +261,36 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
 Para dúvidas ou issues:
 - Abra uma issue no GitHub
 - Consulte a documentação ANBIMA: https://developers.anbima.com.br
-- Email: seu-email@example.com
 
 ## 🙏 Agradecimentos
 
 - ANBIMA pela API de dados
-- React community
-- Comunidade financeira brasileira
 
 ---
 
-**Última atualização**: Janeiro 2026
-**Versão**: 1.0.0
+**Última atualização**: Junho 2026
+**Versão**: 1.1.0
+
+## 🆕 Changelog
+
+### v1.1.0 (Junho 2026)
+- ✨ Implementado CORS proxy com múltiplos fallbacks para API ANBIMA
+- ✨ Adicionado cache local (localStorage) com validade de 1 hora
+- ✨ Exportação de dados para CSV e JSON
+- ✨ Paginação inteligente (25 itens por página)
+- ✨ Indicador de fonte de dados
+- ✨ Botão de atualização/refresh manual
+- 🐛 Correção de performance com grandes volumes de dados
+- 🎨 Melhorias na UI e feedback visual
+
+### v1.0.0 (Janeiro 2026)
+- 🎉 Lançamento inicial
+- Dashboard interativo CRI/CRA
+- Integração com API ANBIMA
+- Filtros e ordenação dinâmica
+- Modo escuro automático
+
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/JulioRamos/cri-cra-dashboard)
